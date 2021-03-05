@@ -69,11 +69,11 @@
     wait_timeout: 300
     exact_count: 1
     count_tag:
-      Name: "{{ ec2_name_prefix }} "{{ instance_name }}" {{ item }}"
+      Name: "{{ ec2_name_prefix }} {{ instance_name }} {{ item }}"
     instance_tags:
       Role: "{{ instance_role }}"
       Platform: "{{ instance_platform }}"
-      Name: "{{ ec2_name_prefix }} "{{ instance_name }}" {{ item }}"
+      Name: "{{ ec2_name_prefix }} {{ instance_name }} {{ item }}"
       Inventory: "{{ ec2_name_prefix }}"
       Stage: "instantiated"
   loop: "{{ range(1, instance_count +1)|list }}"
