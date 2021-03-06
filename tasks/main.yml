@@ -76,6 +76,7 @@
       Name: "{{ ec2_name_prefix }} {{ instance_name }} {{ item }}"
       Inventory: "{{ ec2_name_prefix }}"
       Stage: "instantiated"
+    user_data: "{{ user_data }}"
   loop: "{{ range(1, instance_count +1)|list }}"
   loop_control:
     label: "{{ item }}"

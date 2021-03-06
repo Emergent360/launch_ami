@@ -8,3 +8,4 @@ instance_count: 1
 instance_name: "Test Instance"
 instance_role: "Test Role"
 instance_platform: "Test Platform"
+user_data: ""
