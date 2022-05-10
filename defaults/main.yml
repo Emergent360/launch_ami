@@ -1,12 +1,14 @@
 ---
 # defaults file for launch_ami
 ec2_name_prefix: Test
+tier: "Public"
+zone: A
 ec2_region: us-east-1
-ami_name: "RHEL-8.2-x86_64-Minimal-10GiB-HVM*"
+ami_name: "RHEL-8.2.0_HVM-20200423-x86_64-0-Hourly2-GP2"
 instance_type: t2.medium
 instance_count: 1
-instance_name: "Test Instance"
-instance_role: "Test Role"
-instance_platform: "Test Platform"
+instance_name: RHEL server
+instance_role: Server
+instance_platform: RHEL
 user_data: ""
 lc_env: ""
