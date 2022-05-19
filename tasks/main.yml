@@ -63,14 +63,16 @@
     region: "{{ ec2_region }}"
     image_id: "{{ target_ami.image_id }}"
     instance_type: "{{ instance_type }}"
-    group_id: "{{ group_id }}"
+#    group_id: "{{ group_id }}"
+    security_group: "{{ group_id }}"
     vpc_subnet_id: "{{ subnet_id }}"
     wait: yes
     wait_timeout: 300
     exact_count: 1
-    count_tag:
-      Name: "{{ ec2_name_prefix }} {{ lc_env }} {{ instance_name }} {{ item }}"
-    instance_tags:
+#    count_tag:
+#      Name: "{{ ec2_name_prefix }} {{ lc_env }} {{ instance_name }} {{ item }}"
+#    instance_tags:
+    tags:
       Role: "{{ instance_role }}"
       Platform: "{{ instance_platform }}"
       Name: "{{ ec2_name_prefix }} {{ lc_env }} {{ instance_name }} {{ item }}"
