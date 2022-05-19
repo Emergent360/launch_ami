@@ -1,7 +1,7 @@
 ---
 # tasks file for launch_ami
 - name: Get the VPC ID for {{ ec2_name_prefix }}-vpc
-  ec2_vpc_net_info:
+  amazon.aws.ec2_vpc_net_info:
     filters:
       "tag:Name": "{{ ec2_name_prefix }}-vpc"
     region: "{{ ec2_region }}"
@@ -12,7 +12,7 @@
     vpc_id: "{{ vpc_net_facts.vpcs[0].id }}"
 
 - name: Get the SG info for {{ ec2_name_prefix }}-vpc
-  ec2_group_info:
+  amazon.aws.ec2_group_info:
     filters:
       vpc-id: "{{ vpc_id }}"
     region: "{{ ec2_region }}"
@@ -33,7 +33,7 @@
   when: tier == "Private"
     
 - name: Get the subnet info for {{ ec2_name_prefix }}-vpc
-  ec2_vpc_subnet_info:
+  amazon.aws.ec2_vpc_subnet_info:
     region: "{{ ec2_region }}"
     filters:
       vpc-id: "{{ vpc_id }}"
@@ -46,7 +46,7 @@
     subnet_query: "[?tags.Name=='{{ ec2_name_prefix }}-{{ tier }}-{{ zone }}'].subnet_id"
 
 - name: "Find current, region-specific AMI."
-  ec2_ami_info:
+  amazon.aws.ec2_ami_info:
     region: "{{ ec2_region }}"
     filters:
       name: "{{ ami_name }}"
@@ -58,7 +58,7 @@
   when: found_amis.images is defined
 
 - name: "Start instances."
-  ec2:
+  amazon.aws.ec2_instance:
     key_name: "{{ ec2_name_prefix }}-key"
     region: "{{ ec2_region }}"
     image: "{{ target_ami.image_id }}"
