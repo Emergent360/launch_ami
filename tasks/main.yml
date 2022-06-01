@@ -71,6 +71,7 @@
     exact_count: 1
     filters:
       "tag:Name": "{{ ec2_name_prefix }} {{ instance_name }} {{ item }}"
+      instance-state-name: "running"
     state: running
 #    count_tag:
 #      Name: "{{ ec2_name_prefix }} {{ lc_env }} {{ instance_name }} {{ item }}"
