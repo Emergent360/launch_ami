@@ -70,7 +70,7 @@
     wait_timeout: 300
 #    exact_count: 1
     filters:
-      "tag:Name": "{{ ec2_name_prefix }} {{ instance_name }} {{ item }}"
+      "tag:Name": "{{ ec2_name_prefix }} {{ instance_name }} {{ lc_env }} {{ item }}"
       instance-state-name: "running"
     state: running
 #    count_tag:
